@@ -29,3 +29,40 @@ However, MYC is notorious for being "undruggable" [Ref](https://www.ncbi.nlm.nih
 
 1. MYC protein network diagram (R notebook)
 2. MYC-related pediatric drug safety profiles
+
+
+## Medication Data
+
+|OMOP CONCEPT | NAME | Mode |
+:--------------:|:----| :---|
+|21603618|dexamethasone|ophthalmic (corticosteroids, plain)|
+|21603748|cisplatin|inhalant, parenteral|
+|21603641|diclofenac|ophthalmic|
+|21600819|calcitriol|systemic|
+|21602040|calcitriol|topical|
+|21603732|doxorubicin|parenteral, topical|
+|21602516|ethinylestradiol|oral (natural and semisynthetic estrogens, plain)|
+|21603718|etoposide|systemic|
+|21601436|fluorouracil|systemic|
+|21603833|fulvestrant|parenteral|
+|21601236|hemin|systemic, topical|
+|21603941|indometacin|systemic, rectal|
+|21600747|metformin|oral|
+|21601423|methotrexate|systemic (folic acid analog.)|
+|21602623|mifepristone|oral|
+|21603738|mitoxantrone|parenteral|
+|21600435|nitroprusside|parenteral|
+|21603151|ritonavir| oral|
+|21604714|sertraline| oral|
+|21603942|sulindac|systemic, rectal
+|21603831|tamoxifen|oral|
+|21603719|teniposide|parenteral|
+|21602510|testosterone|systemic, rectal, sublingual, transdermal|
+|21603332|theophylline|systemic, rectal|
+|21603793|[U] tretinoin|systemic|
+|21604422|valproic acid|systemic, rectal|
+|21603809|[U] vorinostat| oral|
+|21601442|decitabine| systemic|
+|21603730|dactinomycin|parenteral|
+
+
