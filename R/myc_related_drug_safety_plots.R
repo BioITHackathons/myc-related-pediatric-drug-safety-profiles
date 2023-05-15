@@ -14,7 +14,13 @@ theme_set(theme_bw(base_size = 16))
 
 myc_related_drug_safety_enrichment_data <- 
     arrow::read_feather("data/myc_related_drug_safety_enrichment_data.feather")
-
+myc_related_drug_safety_enrichment_data <- 
+    myc_related_drug_safety_enrichment_data %>% 
+    mutate(
+        nichd = factor(nichd,
+                       unique(nichd)
+        )
+    )
 myc_related_drug_safety_data <- 
     arrow::read_feather("data/myc_related_drug_safety_data.feather")
 myc_related_drug_safety_data <- 
@@ -25,6 +31,15 @@ myc_related_drug_safety_data <-
         )
     )
 
+myc_related_drug_safety_enrichment_data <- 
+    arrow::read_feather("data/myc_related_drug_safety_enrichment_data.feather")
+myc_related_drug_safety_enrichment_data <- 
+    myc_related_drug_safety_enrichment_data %>% 
+    mutate(
+        nichd = factor(nichd,
+                       levels(myc_related_drug_safety_data$nichd)
+        )
+    )
 myc_related_drug_safety_metadata <- 
     arrow::read_feather("data/myc_related_drug_safety_metadata.feather")
 
@@ -50,16 +65,37 @@ ggsave("imgs/number_of_side_effects_for_myc_related_drug_signals.pdf",width=14,h
 
 myc_related_drug_safety_data %>%
     ggplot(aes(nichd,norm)) +
-    geom_line(aes(group=ade),alpha=0.01) +
+    geom_line(aes(group=ade,color=cluster_name),alpha=0.01,linewidth=2) +
     labs(y="Normalized dGAM score",x=NULL,
          title="MYC-related pediatric drug safety signals",
          caption=paste0("There are ",
                         n_distinct(myc_related_drug_safety_data$atc_concept_id),
                         " drugs related to MYC gene expression changes via Drugbank")) +
+    guides(color=guide_legend(title="Cluster",ncol = 2,title.position = "top",
+                              override.aes = list(alpha=1))) +
+    facet_wrap(~cluster_name,ncol = 2) +
+    scale_color_brewer(palette = "Set2") +
     theme(
+        legend.position = "bottom",
         axis.text.x = element_text(angle=45,vjust=1,hjust=1)
     )
-ggsave("imgs/normalized_dgam_scores_for_myc_related_signals.pdf",width=8,height=5)
+ggsave("imgs/normalized_dgam_scores_for_myc_related_signals.pdf",width=12,height=8)
+
+myc_related_drug_safety_data %>%
+    filter(gt_null_99==1) %>% 
+    ggplot(aes(nichd,norm)) +
+    geom_line(aes(group=ade,color=cluster_name),alpha=0.5,linewidth=2) +
+    labs(y="Normalized dGAM score",x=NULL,
+         title="MYC-related pediatric drug safety signals",
+         ) +
+    guides(color=guide_legend(title="Cluster",ncol = 2,title.position = "top",
+                              override.aes = list(alpha=1))) +
+    scale_color_brewer(palette = "Set2") +
+    theme(
+        legend.position = "bottom",
+        axis.text.x = element_text(angle=45,vjust=1,hjust=1)
+    )
+ggsave("imgs/significant_dgam_scores_for_myc_related_signals.pdf",width=12,height=8)
 
 # Plot enrichment of MYC-related drugs and side effects -------------------
 
@@ -72,11 +108,12 @@ palette <-
 
 
 myc_related_drug_safety_enrichment_data %>% 
+    arrange(nichd) %>% 
     ggplot(aes(pvalue,lwr,fill=atc_concept_name)) +
     geom_point(position = position_jitter(),pch=21) +
     geom_label_repel(
         data = myc_related_drug_safety_enrichment_data %>% 
-            filter(lwr>1.5),
+            filter(lwr>1),
         aes(label=paste0(atc_concept_name,"\n",meddra_concept_name)),
         force=20
     ) +
@@ -84,38 +121,7 @@ myc_related_drug_safety_enrichment_data %>%
     guides(fill=guide_legend(title="MYC-related drugs")) +
     xlab("P-value") +
     ylab("95% Lower Bound Confidence Interval") +
-    ggtitle("MYC-related drug effect enrichments")
+    ggtitle("MYC-related drug effect enrichments") +
+    facet_wrap(~nichd)
+ggsave("imgs/enrichment_of_significant_myc_related_signals.pdf",width=15,height=10)
 
-myc_related_drug_safety_data_summary <- 
-    myc_related_drug_safety_data %>% 
-    summarise(
-        mean = mean(gam_score_90mse,na.rm=T),
-        .by = c(nichd,meddra_concept_id)
-    ) %>% 
-    left_join(
-        myc_related_drug_safety_metadata %>% 
-            distinct(meddra_concept_name_4,meddra_concept_id, meddra_concept_name_1, nichd),
-        by = join_by(meddra_concept_id, nichd)
-    ) %>% 
-    mutate(
-        nichd = factor(nichd,
-                       unique(nichd)
-        )
-    )
-
-
-# MYC-related pediatric drug cardiac side effect signals ------------------
-
-myc_related_drug_safety_data_summary %>%
-    filter(grepl("Cardi",meddra_concept_name_4)) %>% 
-    arrange(desc(mean))
-
-myc_related_drug_safety_data_summary %>%
-    filter(grepl("Cardi",meddra_concept_name_4)) %>% 
-    ggplot(aes(nichd,mean)) +
-    geom_line(position = pos,aes(group=meddra_concept_id)) +
-    facet_wrap(~meddra_concept_name_4,scales = "free_y") +
-    theme(
-        axis.text.x = element_text(angle=45,vjust=1,hjust=1)
-    ) +
-    coord_cartesian(ylim=c(0,NA))
