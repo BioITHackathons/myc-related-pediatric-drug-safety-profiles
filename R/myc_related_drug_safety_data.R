@@ -9,7 +9,14 @@ con <- kidsides::connect_sqlite_db()
 
 tbl(con,"ade_nichd") %>% 
     filter(atc_concept_id %in% myc_related_drugs) %>% 
-    collect() %>% 
+    left_join(tbl(con,"ade"),
+              by = join_by(atc_concept_id, meddra_concept_id, ade)) %>% 
+    collect() %>%
+    mutate(
+        nichd = factor(nichd,
+                       unique(nichd)
+        )
+    ) %>% 
     arrow::write_feather("data/myc_related_drug_safety_data.feather")
 
 tbl(con,"ade_nichd_enrichment") %>% 

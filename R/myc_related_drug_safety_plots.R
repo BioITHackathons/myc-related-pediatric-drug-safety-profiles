@@ -28,6 +28,24 @@ myc_related_drug_safety_data <-
 myc_related_drug_safety_metadata <- 
     arrow::read_feather("data/myc_related_drug_safety_metadata.feather")
 
+
+# Number of side effects per MYC-related drug -----------------------------
+
+myc_related_drug_safety_data %>% 
+    left_join(
+        myc_related_drug_safety_metadata %>% 
+            distinct(atc_concept_id,atc_concept_name),
+        by = join_by(atc_concept_id)
+    ) %>% 
+    summarise(N = n(),.by=c(atc_concept_id,atc_concept_name)) %>% 
+    arrange(desc(N)) %>% 
+    ggplot(aes(N,forcats::fct_infreq(atc_concept_name,N))) +
+    geom_bar(stat="identity") +
+    scale_x_continuous(labels = scales::comma) +
+    labs(x="Number of observed side effects during childhood (birth through 21)",y=NULL,
+         title="Number of side effects for drugs with MYC-related gene expression changes")
+ggsave("imgs/number_of_side_effects_for_myc_related_drug_signals.pdf",width=14,height=6)
+
 # Normalized dGAM scores for MYC-related pediatric drug safety signals --------
 
 myc_related_drug_safety_data %>%
