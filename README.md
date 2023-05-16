@@ -82,6 +82,16 @@ signals of the drug for the side effects in the class. We show the lower
 available:
 
 ![](imgs/enrichment_of_significant_myc_related_signals_by_expression.png)
+We summarised drug safety signals at each stage by the type of side
+effect:
+
+System Organ Classes:
+
+![](imgs/pediatric_drug_safety_profile_by_meddra_concept_name_4_by_stage.png)
+
+Therapeutic class:
+
+![](imgs/pediatric_drug_safety_profile_by_atc1_concept_name_by_stage.png)
 
 ## Medication Data<a name="meds"></a>
 

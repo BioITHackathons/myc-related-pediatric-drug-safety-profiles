@@ -35,6 +35,15 @@ We observed similar drug safety signal trends across childhood between te MYC ex
 We hypothesize that for these 43 drugs, there are significant drug safety signals across childhood for groups or classes of the observed side effects. The evidence is the result of a 2x2 test for significant signals of the drug for the side effects in the class. We show the lower 95% confidence interval to indicate a lower limit for the evidence available:
 
 ![](imgs/enrichment_of_significant_myc_related_signals_by_expression.png)
+We summarised drug safety signals at each stage by the type of side effect:
+
+System Organ Classes:
+
+![](imgs/pediatric_drug_safety_profile_by_meddra_concept_name_4_by_stage.png)
+
+Therapeutic class:
+
+![](imgs/pediatric_drug_safety_profile_by_atc1_concept_name_by_stage.png)
 
 ## Medication Data<a name="meds"></a>
 
