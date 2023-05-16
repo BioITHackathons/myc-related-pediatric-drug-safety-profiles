@@ -38,7 +38,15 @@ Drug names taken from [pharmaco-transcriptomics table on Drugbank where Gene==MY
 
 |OMOP CONCEPT   | NAME   | Mode | Regulation |
 |:--------------|:----   | :--- |:---------- |
-|21603618|dexamethasone|ophthalmic (corticosteroids, plain)|-- |
+|21603802|arsenic trioxide| systemic|downregulated |
+|21604305|acetylsalicylic acid| systemic, rectal|downregulated|
+|21601441|azacitidine| systemic|downregulated|
+|21602517|estradiol| nasal, systemic, rectal, transdermal, vaginal|downregulated|
+|21602522|estradiol, combinations| systemic| downregulated|
+|21603837|bicalutamide| oral|downregulated|
+|21605260|deferoxamine| ophthalmic, parenteral|downregulated|
+|21602625|raloxifene| oral|downregulated|
+|21600781|rosiglitazone| oral|downregulated|
 |21603748|cisplatin|inhalant, parenteral|downregulated|
 |21603641|diclofenac|ophthalmic| upgregulated|
 |21600819|calcitriol|systemic| downregulated|
@@ -51,7 +59,6 @@ Drug names taken from [pharmaco-transcriptomics table on Drugbank where Gene==MY
 |21601236|hemin|systemic, topical|upregulated|
 |21603941|indometacin|systemic, rectal|upregulated|
 |21600747|metformin|oral|upregulated|
-|21601423|methotrexate|systemic (folic acid analog.)|-- |
 |21602623|mifepristone|oral|downregulated|
 |21603738|mitoxantrone|parenteral|downregulated|
 |21600435|nitroprusside|parenteral|downregulated|
@@ -67,5 +74,12 @@ Drug names taken from [pharmaco-transcriptomics table on Drugbank where Gene==MY
 |21603809|[U] vorinostat| oral|downregulated|
 |21601442|decitabine| systemic|downregulated|
 |21603730|dactinomycin|parenteral|downregulated|
+|21603096|cycloserine| oral|upregulated|
+|21600503|dronabinol| inhalant, nasal, oral, topical|upregulated|
+|21603694|diclofenamide| oral|upregulated|
+|21603959|diclofenac, combinations| oral|upregulated|
+|21604051|diclofenac| topical (antiinflammatory prep., non-steroids for topical use)|upregulated|
+|21604393|phenobarbital| systemic|upregulated|
+|21602542|progesterone| systemic, rectal, vaginal|upregulated|
 
 
