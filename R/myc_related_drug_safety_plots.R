@@ -218,6 +218,60 @@ myc_related_drug_safety_enrichment_data %>%
 ggsave("imgs/enrichment_of_significant_myc_related_signals_by_expression.png",width=20,height=15)
 
 
-# Close connection
+
+# Summarise signals into profiles -----------------------------------------
+
+vars <- c("meddra_concept_name_4","atc1_concept_name")
+widths=c(40,30)
+purrr::walk(1:length(vars),function(i){
+    var <- vars[i]
+    width <- widths[i]
+    myc_related_drug_safety_data %>% 
+        left_join(
+            myc_related_drug_safety_metadata,
+            by = join_by(atc_concept_id, meddra_concept_id, nichd, ade_name)
+        ) %>% 
+        filter(gt_null_99==1) %>% 
+        summarise(
+            lwr = quantile(gam_score,0.025),
+            m = mean(gam_score),
+            upr = quantile(gam_score,0.975),
+            .by = c(nichd,myc_expression,rlang::ensym(var))
+        ) %>% 
+        mutate(
+            nichd = factor(nichd,
+                           unique(nichd)
+            )
+        ) %>% 
+        ggplot(aes(nichd,m)) +
+        geom_point() +
+        geom_path(aes(group=1)) +
+        facet_grid(eval(expr(myc_expression ~ !!rlang::ensym(var)))) +
+        labs(x=NULL,y="Averaage drug safety signal") +
+        theme(
+            axis.text.x = element_text(angle=45,vjust=1,hjust=1)
+        )
+    ggsave(paste0("imgs/pediatric_drug_safety_profile_by_",var,"_by_stage.png"),
+           height=7,width=width)
+    
+})
+
+
+# High than average side effects ------------------------------------------
+
+# myc_related_drug_clean=myc_related_drug_safety_enrichment_data[myc_related_drug_safety_enrichment_data$odds_ratio != Inf,]
+# 
+# myc_related_drug_clean_grouped = myc_related_drug_clean[,list(mean=mean(odds_ratio)),by=.(meddra_concept_name)];
+# 
+# top_ten = myc_related_drug_clean_grouped[order(-mean),][1:8]
+# 
+# barplot(top_ten$mean, main="Side Effects With Highest Ave. odds Ratio", horiz=TRUE, xlab="Side Effects",
+#         names.arg=top_ten$meddra_concept_name,las=2)
+# 
+# ggplot(top_ten,aes(y=meddra_concept_name,x=mean,color=meddra_concept_name))+geom_bar(stat="identity", fill="white") +
+#     ggtitle("Side Effects With Highest Ave. odds Ratio") +
+#     ylab(NULL) + xlab("Average Odds Ratio")
+
+# Close connection --------------------------------------------------------
 
 kidsides::disconnect_sqlite_db(con)
