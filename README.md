@@ -103,11 +103,7 @@ assocciated with up or down regulated MYC gene expression:
 We found varying drug safety signals for the 43 drugs in the kidSIDES
 resource:
 
-``` r
-knitr::include_graphics("imgs/number_of_side_effects_for_myc_related_drug_signals.pdf")
-```
-
-![](imgs/number_of_side_effects_for_myc_related_drug_signals.pdf)<!-- -->
+![](imgs/number_of_side_effects_for_myc_related_drug_signals.png)
 
 ## Hypotheses
 

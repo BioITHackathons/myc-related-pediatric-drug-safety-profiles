@@ -59,7 +59,7 @@ myc_related_drug_safety_data %>%
     scale_x_continuous(labels = scales::comma) +
     labs(x="Number of observed side effects during childhood (birth through 21)",y=NULL,
          title="Number of side effects for drugs with MYC-related gene expression changes")
-ggsave("imgs/number_of_side_effects_for_myc_related_drug_signals.pdf",width=14,height=8)
+ggsave("imgs/number_of_side_effects_for_myc_related_drug_signals.png",width=14,height=8)
 
 myc_related_drug_safety_data %>% 
     left_join(
@@ -75,7 +75,7 @@ myc_related_drug_safety_data %>%
     facet_grid(myc_expression~.,scales = "free_y") +
     labs(x="Number of observed side effects during childhood (birth through 21)",y=NULL,
          title="Number of side effects for drugs with MYC-related gene expression changes")
-ggsave("imgs/number_of_side_effects_for_myc_related_drug_signals_by_expression.pdf",width=14,height=8)
+ggsave("imgs/number_of_side_effects_for_myc_related_drug_signals_by_expression.png",width=14,height=8)
 
 # Normalized dGAM scores for MYC-related pediatric drug safety signals --------
 
@@ -95,7 +95,7 @@ myc_related_drug_safety_data %>%
         legend.position = "bottom",
         axis.text.x = element_text(angle=45,vjust=1,hjust=1)
     )
-ggsave("imgs/normalized_dgam_scores_for_myc_related_signals.pdf",width=12,height=8)
+ggsave("imgs/normalized_dgam_scores_for_myc_related_signals.png",width=12,height=8)
 
 myc_related_drug_safety_data %>%
     filter(gt_null_99==1) %>% 
@@ -111,7 +111,7 @@ myc_related_drug_safety_data %>%
         legend.position = "bottom",
         axis.text.x = element_text(angle=45,vjust=1,hjust=1)
     )
-ggsave("imgs/significant_dgam_scores_for_myc_related_signals.pdf",width=12,height=8)
+ggsave("imgs/significant_dgam_scores_for_myc_related_signals.png",width=12,height=8)
 
 
 myc_related_drug_safety_data %>%
@@ -130,7 +130,7 @@ myc_related_drug_safety_data %>%
         legend.position = "bottom",
         axis.text.x = element_text(angle=45,vjust=1,hjust=1)
     )
-ggsave("imgs/normalized_dgam_scores_for_myc_related_signals_by_expression.pdf",width=20,height=11)
+ggsave("imgs/normalized_dgam_scores_for_myc_related_signals_by_expression.png",width=20,height=11)
 
 pos <- position_dodge2(.7)
 myc_related_drug_safety_data %>%
@@ -152,7 +152,7 @@ myc_related_drug_safety_data %>%
         legend.position = "bottom",
         axis.text.x = element_text(angle=45,vjust=1,hjust=1)
     )
-ggsave("imgs/significant_dgam_scores_for_myc_related_signals_by_expression.pdf",width=12,height=6)
+ggsave("imgs/significant_dgam_scores_for_myc_related_signals_by_expression.png",width=12,height=6)
 
 # Plot enrichment of MYC-related drugs and side effects -------------------
 
@@ -198,5 +198,5 @@ myc_related_drug_safety_enrichment_data %>%
         legend.position = "top",
         axis.text.x = element_text(angle=45,vjust=1,hjust=1)
     )
-ggsave("imgs/enrichment_of_significant_myc_related_signals_by_expression.pdf",width=20,height=15)
+ggsave("imgs/enrichment_of_significant_myc_related_signals_by_expression.png",width=20,height=15)
 
