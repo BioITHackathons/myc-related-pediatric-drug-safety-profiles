@@ -182,3 +182,47 @@ myc_related_drug_safety_enrichment_data %>%
     facet_wrap(~nichd)
 ggsave("imgs/enrichment_of_significant_myc_related_signals.pdf",width=15,height=10)
 
+
+myc_related_drug_safety_enrichment_data %>% 
+    left_join(
+        myc_related_drug_safety_metadata %>% 
+            distinct(atc_concept_id,atc_concept_name),
+        by = join_by(atc_concept_name)
+    ) %>% 
+    left_join(
+        myc_related_drug_safety_data %>% 
+            distinct(atc_concept_id,myc_expression),
+        by = join_by(atc_concept_id)
+    ) %>% 
+    arrange(nichd) %>% 
+    ggplot(aes(nichd,lwr,
+               group=interaction(atc_concept_id,meddra_concept_name))) +
+    geom_line(aes(color=myc_expression)) +
+    geom_label_repel(
+        data = myc_related_drug_safety_enrichment_data %>% 
+            filter(lwr>1) %>% 
+            left_join(
+                myc_related_drug_safety_metadata %>% 
+                    distinct(atc_concept_id,atc_concept_name),
+                by = join_by(atc_concept_name)
+            ) %>% 
+            left_join(
+                myc_related_drug_safety_data %>% 
+                    distinct(atc_concept_id,myc_expression),
+                by = join_by(atc_concept_id)
+            ) %>% 
+            slice(1,.by=c(atc_concept_name,meddra_concept_name)),
+        aes(label=stringr::str_wrap(meddra_concept_name,width = 8)),
+        force=80
+    ) +
+    scale_fill_manual(values = palette) +
+    guides(fill=guide_legend(title="MYC-related drugs")) +
+    facet_wrap(~atc_concept_name) +
+    xlab(NULL) +
+    ylab("95% Lower Bound Confidence Interval") +
+    ggtitle("MYC-related drug effect enrichments") +
+    theme(
+        axis.text.x = element_text(angle=45,vjust=1,hjust=1)
+    )
+ggsave("imgs/enrichment_of_significant_myc_related_signals_by_expression.pdf",width=20,height=15)
+
