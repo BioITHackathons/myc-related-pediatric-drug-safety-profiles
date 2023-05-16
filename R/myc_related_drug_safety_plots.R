@@ -233,9 +233,9 @@ purrr::walk(1:length(vars),function(i){
         ) %>% 
         filter(gt_null_99==1) %>% 
         summarise(
-            lwr = quantile(gam_score,0.025),
-            m = mean(gam_score),
-            upr = quantile(gam_score,0.975),
+            lwr = quantile(gam_score,0.025,na.rm = T),
+            m = mean(gam_score,na.rm = T),
+            upr = quantile(gam_score,0.975,na.rm = T),
             .by = c(nichd,myc_expression,rlang::ensym(var))
         ) %>% 
         mutate(
