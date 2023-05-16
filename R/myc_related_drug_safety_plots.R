@@ -156,33 +156,6 @@ ggsave("imgs/significant_dgam_scores_for_myc_related_signals_by_expression.pdf",
 
 # Plot enrichment of MYC-related drugs and side effects -------------------
 
-palette <- 
-    colorRampPalette(
-        RColorBrewer::brewer.pal(9,name = 'Set1')
-    )(
-        length(unique(myc_related_drug_safety_enrichment_data$atc_concept_name))
-    )
-
-
-myc_related_drug_safety_enrichment_data %>% 
-    arrange(nichd) %>% 
-    ggplot(aes(pvalue,lwr,fill=atc_concept_name)) +
-    geom_point(position = position_jitter(),pch=21) +
-    geom_label_repel(
-        data = myc_related_drug_safety_enrichment_data %>% 
-            filter(lwr>1.5),
-        aes(label=paste0(atc_concept_name,"\n",meddra_concept_name)),
-        force=20
-    ) +
-    scale_fill_manual(values = palette) +
-    guides(fill=guide_legend(title="MYC-related drugs")) +
-    xlab("P-value") +
-    ylab("95% Lower Bound Confidence Interval") +
-    ggtitle("MYC-related drug effect enrichments") +
-    facet_wrap(~nichd)
-ggsave("imgs/enrichment_of_significant_myc_related_signals.pdf",width=15,height=10)
-
-
 myc_related_drug_safety_enrichment_data %>% 
     left_join(
         myc_related_drug_safety_metadata %>% 
@@ -215,13 +188,14 @@ myc_related_drug_safety_enrichment_data %>%
         aes(label=stringr::str_wrap(meddra_concept_name,width = 8)),
         force=80
     ) +
-    scale_fill_manual(values = palette) +
-    guides(fill=guide_legend(title="MYC-related drugs")) +
+    scale_color_brewer(palette = "Set1") +
+    guides(color=guide_legend(title=NULL,title.position = "top")) +
     facet_wrap(~atc_concept_name) +
     xlab(NULL) +
     ylab("95% Lower Bound Confidence Interval") +
     ggtitle("MYC-related drug effect enrichments") +
     theme(
+        legend.position = "top",
         axis.text.x = element_text(angle=45,vjust=1,hjust=1)
     )
 ggsave("imgs/enrichment_of_significant_myc_related_signals_by_expression.pdf",width=20,height=15)
