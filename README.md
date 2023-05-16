@@ -15,7 +15,8 @@ However, MYC is notorious for being "undruggable" [Ref](https://www.ncbi.nlm.nih
 ## Hypotheses
 
 1. Pediatric drug safety profiles based on substrates for proteins in the MYC protein network provide a MYC-related pediatric drug safety profile. 
-2. MYC expression profiles across childhood contain mutual information with MYC-related pediatric drug safety profiles. 
+2. There are distinct pediatric drug safety profiles for drugs associated with upregulated vs downregulated MYCc expression. 
+3. MYC expression profiles across childhood contain mutual information with MYC-related pediatric drug safety profiles. 
 
 ## Methodology
 
