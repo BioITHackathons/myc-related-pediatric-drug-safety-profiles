@@ -2,15 +2,15 @@
 
 ## Background
 
-MYC is an oncoprotein and often implies worse outcomes, however it also seems to have a role in cardiovascular disease. [The Gabriella Miller Kids First Pediatric Research Program](https://kidsfirstdrc.org) has devoted significant resources to collect and standardize next generation sequencing data to investigate MYC in cardiovascular disease. 
+[MYC](https://en.wikipedia.org/wiki/Myc#:~:text=The%20Myc%20family%20consists%20of,the%20viral%20gene%20v%2Dmyc.&text=In%20cancer%2C%20c%2Dmyc%20is,often%20constitutively%20(persistently)%20expressed) is an oncoprotein and often implies worse outcomes, however it also seems to have a role in cardiovascular disease. [The Gabriella Miller Kids First Pediatric Research Program](https://kidsfirstdrc.org) has devoted significant resources to collect and standardize next generation sequencing data to investigate MYC in cardiovascular disease during childhood. 
 
-[kidSIDES](https://github.com/ngiangre/kidsides) is an R data package contains observation, summary, and model-level data from pediatric drug safety research, including investigating drug safety related to MYC expression. 
+[kidSIDES](https://github.com/ngiangre/kidsides) is an R data package that contains observation, summary, and model-level data from pediatric drug safety research. This resource can facilitate the investigation of drug safety related to MYC expression, specifically drugs that are substrates for MYC and proteins with its network. 
 
 ## Motivation
 
-The kidSIDES resource has the unique opportunity to enable generating MYC-related pediatric drug safety profiles. Drugs can interact with proteins (e.g. inhibitors, agonists) as well as be substrates for different enzymes. The kidSIDES resource contains linkages between proteins (UniProt IDs) and drugs (ATC IDs). Gene expression results can be linked from genes (HUGO IDs) and proteins (Uniprot IDs). Through these linkages, we can integrate expression of genes with drug interactors/substrates. Then, the resource allows linking with potentially significant side effects across childhood for generating drug safety profiles. 
+The kidSIDES resource has the unique opportunity to generate MYC-related pediatric drug safety profiles. Drugs can interact with proteins (e.g. inhibitors, agonists) as well as be substrates for different enzymes. The kidSIDES resource contains linkages between proteins (UniProt IDs) and drugs (ATC IDs). Gene expression results can be linked from genes (HUGO IDs) and proteins (Uniprot IDs). Through these linkages, we can integrate expression of genes with drug interactors/substrates. Then, the resource allows linking with potentially significant side effects across childhood for generating drug safety profiles. 
 
-However, MYC is notorious for being "undruggable" [Ref](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6337544/). We will leverage MYC and related proteins both by sequence as well as interactions to facilitate drug effects potentially perturbed through the MYC gene expression network. 
+However, MYC is notorious for being "undruggable" [Ref](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6337544/). MYCc is actually a family of three homologs, where c-MYC (cellular MYC) is constituently expressed in cancers and is a known upregulator of gene expression. c-MYC binds to a non-specific DNA sequence to initiate transcription, and is known to influence mammalian [cell count](https://pubmed.ncbi.nlm.nih.gov/11742404/). Mitigating overexpression of MYC is a hypothesized mechanism for treating tumorigenesis by bromodomain (BET) inhibitors such as [JQ1](http://www.ncbi.nlm.nih.gov/pubmed/21889194). It was shown to be an antiproliferative agent in a mouse model of multiple myeloma. A well known side effect of BET inhibitors is [thrombocytopenia](http://www.ncbi.nlm.nih.gov/pubmed/32989227).
 
 ## Hypotheses
 
