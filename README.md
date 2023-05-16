@@ -83,38 +83,6 @@ available:
 
 ![](imgs/enrichment_of_significant_myc_related_signals_by_expression.png)
 
-## Hypotheses
-
-1.  Pediatric drug safety profiles based on substrates for proteins in
-    the MYC protein network provide a MYC-related pediatric drug safety
-    profile.
-2.  There are distinct pediatric drug safety profiles for drugs
-    associated with upregulated vs downregulated MYCc expression.
-3.  MYC expression profiles across childhood contain mutual information
-    with MYC-related pediatric drug safety profiles.
-
-## Methodology
-
-1.  Identify MYC protein interaction/similarity network. Drugbank’s
-    pharmaco-transcriptomics tool has possible expression-related
-    changes by drugs for MYC.
-    [Link](https://go.drugbank.com/pharmaco/transcriptomics?q%5Bg%5B0%5D%5D%5Bm%5D=or&q%5Bg%5B0%5D%5D%5Bdrug_approved_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_nutraceutical_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_illicit_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_investigational_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_withdrawn_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_experimental_true%5D=all&q%5Bg%5B1%5D%5D%5Bm%5D=or&q%5Bg%5B1%5D%5D%5Bdrug_available_in_us_true%5D=all&q%5Bg%5B1%5D%5D%5Bdrug_available_in_ca_true%5D=all&q%5Bg%5B1%5D%5D%5Bdrug_available_in_eu_true%5D=all&commit=Apply+Filter&q%5Bdrug_precise_names_name_cont%5D=&q%5Bgene_symbol_eq%5D=MYC&q%5Bgene_id_eq%5D=&q%5Bchange_eq%5D=&q%5Binteraction_cont%5D=&q%5Bchromosome_location_cont%5D=).
-    The drug IDs were found in kidsides based on the atc_concept_name
-    name.
-2.  Extract drug profiles based on drug IDs in kidSIDES
-    (myc_related_drug_safety_data.R).
-3.  Visualize safety profiles overall, by side effect, and drug
-    (myc_related_drug_safety_plots.R).
-4.  (Optional) Retrieve MYC gene expression data from Kids First
-    platform.
-5.  (Optional) Identify MYC-related pediatric drug safety profiles with
-    mutual information with thhe MYC gene expression data.
-
-## Ideal Output
-
-1.  MYC protein network diagram (R notebook)
-2.  MYC-related pediatric drug safety profiles
-
 ## Medication Data<a name="meds"></a>
 
 | OMOP CONCEPT | NAME                     | Mode                                                           | Regulation    |

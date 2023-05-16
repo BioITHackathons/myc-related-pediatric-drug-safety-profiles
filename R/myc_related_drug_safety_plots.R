@@ -217,3 +217,7 @@ myc_related_drug_safety_enrichment_data %>%
     )
 ggsave("imgs/enrichment_of_significant_myc_related_signals_by_expression.png",width=20,height=15)
 
+
+# Close connection
+
+kidsides::disconnect_sqlite_db(con)
