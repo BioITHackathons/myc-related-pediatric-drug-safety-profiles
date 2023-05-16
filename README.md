@@ -36,36 +36,36 @@ However, MYC is notorious for being "undruggable" [Ref](https://www.ncbi.nlm.nih
 
 Drug names taken from [pharmaco-transcriptomics table on Drugbank where Gene==MYC](https://go.drugbank.com/pharmaco/transcriptomics?q%5Bg%5B0%5D%5D%5Bm%5D=or&q%5Bg%5B0%5D%5D%5Bdrug_approved_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_nutraceutical_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_illicit_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_investigational_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_withdrawn_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_experimental_true%5D=all&q%5Bg%5B1%5D%5D%5Bm%5D=or&q%5Bg%5B1%5D%5D%5Bdrug_available_in_us_true%5D=all&q%5Bg%5B1%5D%5D%5Bdrug_available_in_ca_true%5D=all&q%5Bg%5B1%5D%5D%5Bdrug_available_in_eu_true%5D=all&commit=Apply+Filter&q%5Bdrug_precise_names_name_cont%5D=&q%5Bgene_symbol_eq%5D=MYC&q%5Bgene_id_eq%5D=&q%5Bchange_eq%5D=&q%5Binteraction_cont%5D=&q%5Bchromosome_location_cont%5D=)
 
-|OMOP CONCEPT | NAME | Mode |
-:--------------:|:----| :---|
-|21603618|dexamethasone|ophthalmic (corticosteroids, plain)|
-|21603748|cisplatin|inhalant, parenteral|
-|21603641|diclofenac|ophthalmic|
-|21600819|calcitriol|systemic|
-|21602040|calcitriol|topical|
-|21603732|doxorubicin|parenteral, topical|
-|21602516|ethinylestradiol|oral (natural and semisynthetic estrogens, plain)|
-|21603718|etoposide|systemic|
-|21601436|fluorouracil|systemic|
-|21603833|fulvestrant|parenteral|
-|21601236|hemin|systemic, topical|
-|21603941|indometacin|systemic, rectal|
-|21600747|metformin|oral|
-|21601423|methotrexate|systemic (folic acid analog.)|
-|21602623|mifepristone|oral|
-|21603738|mitoxantrone|parenteral|
-|21600435|nitroprusside|parenteral|
-|21603151|ritonavir| oral|
-|21604714|sertraline| oral|
-|21603942|sulindac|systemic, rectal
-|21603831|tamoxifen|oral|
-|21603719|teniposide|parenteral|
-|21602510|testosterone|systemic, rectal, sublingual, transdermal|
-|21603332|theophylline|systemic, rectal|
-|21603793|[U] tretinoin|systemic|
-|21604422|valproic acid|systemic, rectal|
-|21603809|[U] vorinostat| oral|
-|21601442|decitabine| systemic|
-|21603730|dactinomycin|parenteral|
+|OMOP CONCEPT   | NAME   | Mode | Regulation |
+|:--------------|:----   | :--- |:---------- |
+|21603618|dexamethasone|ophthalmic (corticosteroids, plain)|-- |
+|21603748|cisplatin|inhalant, parenteral|downregulated|
+|21603641|diclofenac|ophthalmic| upgregulated|
+|21600819|calcitriol|systemic| downregulated|
+|21602040|calcitriol|topical| downregulated|
+|21603732|doxorubicin|parenteral, topical|downregulated|
+|21602516|ethinylestradiol|oral (natural and semisynthetic estrogens, plain)| upregulated|
+|21603718|etoposide|systemic|downregulated|
+|21601436|fluorouracil|systemic|downregulated|
+|21603833|fulvestrant|parenteral|downregulated|
+|21601236|hemin|systemic, topical|upregulated|
+|21603941|indometacin|systemic, rectal|upregulated|
+|21600747|metformin|oral|upregulated|
+|21601423|methotrexate|systemic (folic acid analog.)|-- |
+|21602623|mifepristone|oral|downregulated|
+|21603738|mitoxantrone|parenteral|downregulated|
+|21600435|nitroprusside|parenteral|downregulated|
+|21603151|ritonavir| oral|downregulated|
+|21604714|sertraline| oral| upregulated|
+|21603942|sulindac|systemic, rectal|upregulated|
+|21603831|tamoxifen|oral|downregulated|
+|21603719|teniposide|parenteral|downregulated|
+|21602510|testosterone|systemic, rectal, sublingual, transdermal|downregulated|
+|21603332|theophylline|systemic, rectal|downregulated|
+|21603793|[U] tretinoin|systemic|downregulated|
+|21604422|valproic acid|systemic, rectal|downregulated|
+|21603809|[U] vorinostat| oral|downregulated|
+|21601442|decitabine| systemic|downregulated|
+|21603730|dactinomycin|parenteral|downregulated|
 
 
