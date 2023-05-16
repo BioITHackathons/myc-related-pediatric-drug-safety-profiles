@@ -139,20 +139,20 @@ myc_related_drug_safety_data %>%
               mean_norm = mean(norm),
               upr = mean(norm) + sd(norm),
               .by=c(myc_expression,cluster_name,nichd)) %>% 
-    ggplot(aes(nichd,mean_norm)) +
+    ggplot(aes(nichd,mean_norm,color=myc_expression)) +
     geom_pointrange(aes(ymin=lwr,ymax=upr),position = pos) +
     labs(y="Normalized dGAM score",x=NULL,
          title="MYC-related pediatric drug safety signals",
     ) +
-    guides(color=guide_legend(title="Cluster",ncol = 2,title.position = "top",
+    guides(color=guide_legend(title=NULL,ncol = 2,title.position = "top",
                               override.aes = list(alpha=1))) +
     scale_color_brewer(palette = "Set2") +
-    facet_grid(myc_expression~cluster_name) +
+    facet_grid(.~cluster_name) +
     theme(
         legend.position = "bottom",
         axis.text.x = element_text(angle=45,vjust=1,hjust=1)
     )
-ggsave("imgs/significant_dgam_scores_for_myc_related_signals_by_expression.pdf",width=12,height=8)
+ggsave("imgs/significant_dgam_scores_for_myc_related_signals_by_expression.pdf",width=12,height=6)
 
 # Plot enrichment of MYC-related drugs and side effects -------------------
 
@@ -170,7 +170,7 @@ myc_related_drug_safety_enrichment_data %>%
     geom_point(position = position_jitter(),pch=21) +
     geom_label_repel(
         data = myc_related_drug_safety_enrichment_data %>% 
-            filter(lwr>1),
+            filter(lwr>1.5),
         aes(label=paste0(atc_concept_name,"\n",meddra_concept_name)),
         force=20
     ) +
