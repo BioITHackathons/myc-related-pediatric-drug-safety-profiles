@@ -77,6 +77,23 @@ myc_related_drug_safety_data %>%
          title="Number of side effects for drugs with MYC-related gene expression changes")
 ggsave("imgs/number_of_side_effects_for_myc_related_drug_signals_by_expression.png",width=14,height=8)
 
+myc_related_drug_safety_data %>% 
+    left_join(
+        myc_related_drug_safety_metadata %>% 
+            distinct(atc_concept_id,atc_concept_name),
+        by = join_by(atc_concept_id)
+    ) %>% 
+    filter(gam_score>gt_null_99) %>% 
+    summarise(N = n(),.by=c(atc_concept_id,atc_concept_name,myc_expression)) %>% 
+    arrange(desc(N)) %>% 
+    ggplot(aes(N,forcats::fct_infreq(atc_concept_name,N))) +
+    geom_bar(stat="identity") +
+    scale_x_continuous(labels = scales::comma) +
+    facet_grid(myc_expression~.,scales = "free_y") +
+    labs(x="Number of observed side effects during childhood (birth through 21)",y=NULL,
+         title="Number of significant side effects for drugs with MYC-related gene expression changes")
+ggsave("imgs/number_of_significant_side_effects_for_myc_related_drug_signals_by_expression.png",width=15,height=8)
+
 # Normalized dGAM scores for MYC-related pediatric drug safety signals --------
 
 myc_related_drug_safety_data %>%

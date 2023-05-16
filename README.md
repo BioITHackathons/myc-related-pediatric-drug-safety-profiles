@@ -53,12 +53,35 @@ filtered by MYC to extract the drugs with any known association to MYc
 expression alterations. In total, there are [43
 drugs](Drug%20names%20taken%20from%20%5Bpharmaco-transcriptomics%20table%20on%20Drugbank%20where%20Gene==MYC%5D(https://go.drugbank.com/pharmaco/transcriptomics?q%5Bg%5B0%5D%5D%5Bm%5D=or&q%5Bg%5B0%5D%5D%5Bdrug_approved_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_nutraceutical_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_illicit_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_investigational_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_withdrawn_true%5D=all&q%5Bg%5B0%5D%5D%5Bdrug_experimental_true%5D=all&q%5Bg%5B1%5D%5D%5Bm%5D=or&q%5Bg%5B1%5D%5D%5Bdrug_available_in_us_true%5D=all&q%5Bg%5B1%5D%5D%5Bdrug_available_in_ca_true%5D=all&q%5Bg%5B1%5D%5D%5Bdrug_available_in_eu_true%5D=all&commit=Apply+Filter&q%5Bdrug_precise_names_name_cont%5D=&q%5Bgene_symbol_eq%5D=MYC&q%5Bgene_id_eq%5D=&q%5Bchange_eq%5D=&q%5Binteraction_cont%5D=&q%5Bchromosome_location_cont%5D=))
 associated with up or down regulated MYC gene expression. See the
-medication data [here](#markdown-header-medication-data).
+medication data [below](#meds).
 
 We found varying drug safety signals for the 43 drugs in the kidSIDES
 resource:
 
 ![](imgs/number_of_side_effects_for_myc_related_drug_signals.png)
+
+There were 29 and 14 drugs associated with MYC down and upregulated gene
+expression, respectively. These groups each observed different side
+effects in kidSIDES:
+
+![](imgs/number_of_side_effects_for_myc_related_drug_signals_by_expression.png)
+kidSIDES information includes the adverse drug effects that are
+significant in comparison to randomly reported drugs and side effects:
+
+![](imgs/number_of_significant_side_effects_for_myc_related_drug_signals_by_expression.png)
+
+We observed similar drug safety signal trends across childhood between
+te MYC expression categories:
+
+![](imgs/normalized_dgam_scores_for_myc_related_signals_by_expression.png)
+We hypothesize that for these 43 drugs, there are significant drug
+safety signals across childhood for groups or classes of the observed
+side effects. The evidence is the result of a 2x2 test for significant
+signals of the drug for the side effects in the class. We show the lower
+95% confidence interval to indicate a lower limit for the evidence
+available:
+
+![](imgs/enrichment_of_significant_myc_related_signals_by_expression.png)
 
 ## Hypotheses
 
@@ -92,7 +115,7 @@ resource:
 1.  MYC protein network diagram (R notebook)
 2.  MYC-related pediatric drug safety profiles
 
-## Medication Data
+## Medication Data<a name="meds"></a>
 
 | OMOP CONCEPT | NAME                     | Mode                                                           | Regulation    |
 |:-------------|:-------------------------|:---------------------------------------------------------------|:--------------|
