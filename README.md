@@ -1,6 +1,8 @@
 MYC-related pediatric drug safety profiles
 ================
 
+WARNING: On 20230519, kidisides was archived on CRAN for a policy violation. kidsides 0.5.0 was submitted to CRAN on 20230520. This warning will be removed once kidsides is back on CRAN. If not, this will affect running the code in R/
+
 ## Background
 
 [MYC](https://en.wikipedia.org/wiki/Myc#:~:text=The%20Myc%20family%20consists%20of,the%20viral%20gene%20v%2Dmyc.&text=In%20cancer%2C%20c%2Dmyc%20is,often%20constitutively%20(persistently)%20expressed)
